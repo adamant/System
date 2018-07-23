@@ -1,6 +1,7 @@
 namespace System
 {
-	public class NotImplementedException: Exception
+	// This isn't an exception, this is a panic
+	/*public class NotImplementedException: Exception
 	{
-	}
+	}*/
 }

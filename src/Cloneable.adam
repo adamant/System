@@ -1,7 +1,7 @@
 namespace System
 {
-	public abstract class Cloneable
+	/*public abstract class Cloneable
 	{
-		public abstract Clone() => own self;
-	}
+		public abstract Clone() -> own self;
+	}*/
 }

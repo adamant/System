@@ -1,0 +1,60 @@
+namespace System
+{
+	// TODO this should extend string
+
+		// private constructor used 
+		/*private new(own codePoints: Array<codePoint>)
+		{
+			this.codePoints = codePoints;
+		}*/
+		
+		//@inline
+		/*public get ByteLength() => own int
+		{
+			return bytes.Length;
+		}*/
+		
+		/*public Substring(start: int) => own string
+		{
+			return Substring(start, Length-start);
+		}*/
+		
+		/*public Substring(start: int, length: int) => own string
+			throws OutOfRangeException
+		{
+			// TODO better way to handle arg checking?
+			if(start < 0)
+				throw new OutOfRangeException(start, ""); // TODO load message
+			
+			if(start > Length)
+				throw new OutOfRangeException(start, ""); // TODO load message
+			
+			if(length < 0)
+				throw new OutOfRangeException(length, ""); // TODO load message
+			
+			if(length == 0)
+				return "";
+				
+			return new string(codePoints.Slice(start, length));
+		}
+		
+		public Clone() => own self
+		{
+			return new string(codePoints.Clone());
+		}
+		
+		public IndexOf(value: codePoint) => own int
+		{
+			return IndexOf(value, 0, Length);
+		}
+		
+		public IndexOf(value: codePoint, start: int) => own int
+		{
+			return IndexOf(value, start, Length - start);
+		}
+		
+		public IndexOf(value: codePoint, start: int, length: int) => own int
+		{
+			// TODO implement
+		}*/
+}

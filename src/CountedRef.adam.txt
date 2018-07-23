@@ -1,0 +1,61 @@
+namespace System
+{
+	public move struct CountedRef<T>
+	{
+		private let box: * mut CountedRefBox<T>; // we don't own it, we need a pointer
+		
+		public new(value: own T)
+		{
+			box = new* CountedRefBox<T>(value); // make a new CountedRefBox on the heap and return a pointer to it
+		}
+		
+		private new(box: * mut CountedRefBox<T>)
+		{
+			this.box = box;
+		}
+		
+		/// Copy method allows explicit copy
+		public copy(ref self) -> Counted<T>
+		{
+			box.count += 1;
+			return new Counted<T>(box);
+		}
+		
+		public safe implicit conversion(ref self) -> T
+		{
+			return unsafe(box.value);
+		}
+		
+		public safe operator .(ref self)
+		{
+			return unsafe(box.value);
+		}
+		
+		// TODO do I need to implement the deref operator * ?
+		
+		public safe delete(self) // because this is a move struct, this takes "ownership"
+		{
+			box.count -= 1;
+			if(box.count == 0)
+				unsafe(delete box); // Box is a manual memory pointer
+		}
+	}
+	
+	internal move struct CountedRefBox<T>
+	{
+		public var count: size = 1;
+		public let value: own T;
+		
+		public new(value: own T)
+		{
+			this.value = value;
+		}
+	}
+	
+	/// A base class for types that are inherently reference counted
+	public abstract class Counted
+	{
+		private count: size;
+		
+	}
+}
